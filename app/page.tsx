@@ -56,6 +56,21 @@ export default function ElegantMemorialFlyer() {
     setMemorialData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const calculateAge = (birthDate: string, deathDate: string): number => {
+    const birth = new Date(birthDate);
+    const death = new Date(deathDate);
+    let age = death.getFullYear() - birth.getFullYear();
+    const monthDiff = death.getMonth() - birth.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && death.getDate() < birth.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  };
+
   const handlePhotoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -440,7 +455,12 @@ export default function ElegantMemorialFlyer() {
                           )}
                         </div>
                         <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-amber-300 rounded-full flex items-center justify-center">
-                          <Heart className="h-4 w-4 text-slate-800" />
+                          <span className="text-slate-800 text-sm font-bold italic">
+                            {calculateAge(
+                              memorialData.birthDate,
+                              memorialData.deathDate
+                            )}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -470,7 +490,7 @@ export default function ElegantMemorialFlyer() {
                         <div className="absolute -top-2 -left-2 text-4xl text-amber-300/30 font-serif">
                           &apos;
                         </div>
-                        <p className="text-white/90 text-base italic leading-relaxed px-6">
+                        <p className="text-white/90 text-base text-italic leading-relaxed px-6">
                           {memorialData.quote}
                         </p>
                         <div className="absolute -bottom-2 -right-2 text-4xl text-amber-300/30 font-serif">
