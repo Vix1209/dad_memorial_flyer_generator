@@ -47,7 +47,7 @@ export default function ElegantMemorialFlyer() {
     familyMessage:
       "Though we are deeply saddened by our loss, we celebrate a life beautifully lived and a legacy that will forever remain in our hearts.",
     survivedBy: "His loving children, grandchildren, and extended family",
-    photo: "",
+    photo: "/image/Daddy.jpg",
   });
 
   const cardRef = useRef<HTMLDivElement>(null);
