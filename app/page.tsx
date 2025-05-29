@@ -29,6 +29,8 @@ interface MemorialData {
   photo: string;
 }
 
+
+
 export default function ElegantMemorialFlyer() {
   const [memorialData, setMemorialData] = useState<MemorialData>({
     fullName: "Ogbonnaya Ofor",
