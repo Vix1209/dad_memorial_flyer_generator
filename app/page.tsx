@@ -29,8 +29,6 @@ interface MemorialData {
   photo: string;
 }
 
-
-
 export default function ElegantMemorialFlyer() {
   const [memorialData, setMemorialData] = useState<MemorialData>({
     fullName: "Ogbonnaya Ofor",
@@ -430,16 +428,10 @@ export default function ElegantMemorialFlyer() {
                       <div className="relative">
                         <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-amber-300/50 shadow-2xl">
                           {memorialData.photo ? (
-                            <Image
+                            <img
                               src={memorialData.photo || "/placeholder.svg"}
                               alt="Memorial photo"
                               className="w-full h-full object-cover"
-                              width={192}
-                              height={192}
-                              loading="lazy"
-                              quality={100}
-                              style={{ objectFit: "cover" }}
-                              draggable={false}
                             />
                           ) : (
                             <div className="w-full h-full bg-slate-600 flex items-center justify-center">
